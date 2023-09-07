@@ -12,17 +12,13 @@ public class Driver {
     BinaryTree<Character> gTree =
       new BinaryTree<>('G');
     BinaryTree<Character> dTree =
-      new BinaryTree<>();
-    dTree.buildTree('D', null, fTree);
+      new BinaryTree<>('D', null, fTree);
     BinaryTree<Character> aTree =
-        new BinaryTree<>();
-    aTree.buildTree('A', bTree, dTree);
+        new BinaryTree<>('A', bTree, dTree);
     BinaryTree<Character> cTree =
-      new BinaryTree<>();
-    cTree.buildTree('C', null, gTree);
+      new BinaryTree<>('C', null, gTree);
     BinaryTree<Character> eTree =
-      new BinaryTree<>();
-    eTree.buildTree('E', aTree, cTree);
+      new BinaryTree<>('E', aTree, cTree);
     System.out.print("Preorder: ");
     eTree.preorderTraverse();
     System.out.print("\nInorder: ");
