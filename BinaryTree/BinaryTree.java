@@ -35,15 +35,15 @@ public class BinaryTree<T> implements BinaryTreeInterface<T> {
 
   private void privateBuildTree(T rootData, BinaryTree<T> leftTree,
                                 BinaryTree<T> rightTree){
-      root = new BinaryNode<>(rootData);
+      BinaryNode<T> newRoot = new BinaryNode<>(rootData);
       if((leftTree != null) && (!leftTree.isEmpty())){
-        root.setLeftChild(leftTree.getRoot());
+        newRoot.setLeftChild(leftTree.getRoot());
       }
       if((rightTree != null)&&(!rightTree.isEmpty())){
         if(leftTree == rightTree) {
-          root.setRightChild(rightTree.getRoot().copy());
+          newRoot.setRightChild(rightTree.getRoot().copy());
         } else {
-          root.setRightChild(rightTree.getRoot());
+          newRoot.setRightChild(rightTree.getRoot());
         }
       }
 
@@ -53,6 +53,7 @@ public class BinaryTree<T> implements BinaryTreeInterface<T> {
       if((rightTree != null)&&(rightTree != this)){
         rightTree.clear();
       }
+      root = newRoot;
   }
 
   public T getRootData() throws EmptyTreeException {
