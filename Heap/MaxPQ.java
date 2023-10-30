@@ -56,7 +56,9 @@ public class MaxPQ<Key> implements Iterable<Key> {
      * @param  initCapacity the initial capacity of this priority queue
      */
     public MaxPQ(int initCapacity) {
-        pq = (Key[]) new Object[initCapacity + 1];
+        @SuppressWarnings("unchecked")
+        Key[] temp = (Key[]) new Object[initCapacity + 1];
+        pq = temp;
         n = 0;
     }
 

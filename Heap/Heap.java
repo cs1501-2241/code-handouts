@@ -40,7 +40,7 @@ public class Heap {
      * Rearranges the array in ascending order, using the natural order.
      * @param pq the array to be sorted
      */
-    public static void sort(Comparable[] pq) {
+    public static <T> void sort(Comparable<? super T>[] pq) {
         int n = pq.length;
         for (int k = n/2; k >= 1; k--)
             sink(pq, k, n);
@@ -54,7 +54,7 @@ public class Heap {
     * Helper functions to restore the heap invariant.
     ***************************************************************************/
 
-    private static void sink(Comparable[] pq, int k, int n) {
+    private static <T> void sink(Comparable<? super T>[] pq, int k, int n) {
         while (2*k <= n) {
             int j = 2*k;
             if (j < n && less(pq, j, j+1)) j++;
@@ -79,7 +79,7 @@ public class Heap {
     }
 
     // print array to standard output
-    private static void show(Comparable[] a) {
+    private static <T> void show(Comparable<? super T>[] a) {
         for (int i = 0; i < a.length; i++) {
             StdOut.println(a[i]);
         }

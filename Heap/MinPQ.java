@@ -54,7 +54,9 @@ public class MinPQ<Key> implements Iterable<Key> {
      * @param  initCapacity the initial capacity of this priority queue
      */
     public MinPQ(int initCapacity) {
-        pq = (Key[]) new Object[initCapacity + 1];
+        @SuppressWarnings("unchecked")
+        Key[] temp = (Key[]) new Object[initCapacity + 1];
+        pq = temp;
         n = 0;
     }
 
@@ -74,7 +76,9 @@ public class MinPQ<Key> implements Iterable<Key> {
      */
     public MinPQ(int initCapacity, Comparator<Key> comparator) {
         this.comparator = comparator;
-        pq = (Key[]) new Object[initCapacity + 1];
+        @SuppressWarnings("unchecked")
+        Key[] temp = (Key[]) new Object[initCapacity + 1];
+        pq = temp;
         n = 0;
     }
 
@@ -96,7 +100,9 @@ public class MinPQ<Key> implements Iterable<Key> {
      */
     public MinPQ(Key[] keys) {
         n = keys.length;
-        pq = (Key[]) new Object[keys.length + 1];
+        @SuppressWarnings("unchecked")
+        Key[] temp = (Key[]) new Object[keys.length + 1];
+        pq = temp;
         for (int i = 0; i < n; i++)
             pq[i+1] = keys[i];
         for (int k = n/2; k >= 1; k--)
@@ -137,6 +143,7 @@ public class MinPQ<Key> implements Iterable<Key> {
     // helper function to double the size of the heap array
     private void resize(int capacity) {
         assert capacity > n;
+        @SuppressWarnings("unchecked")
         Key[] temp = (Key[]) new Object[capacity];
         for (int i = 1; i <= n; i++) {
             temp[i] = pq[i];

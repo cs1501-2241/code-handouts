@@ -55,7 +55,9 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
     public IndexMaxPQ(int maxN) {
         if (maxN < 0) throw new IllegalArgumentException();
         n = 0;
-        keys = (Key[]) new Comparable[maxN + 1];    // make this of length maxN??
+        @SuppressWarnings("unchecked")
+        Key[] temp = (Key[]) new Comparable[maxN + 1];    // make this of length maxN??
+        keys = temp;
         pq   = new int[maxN + 1];
         qp   = new int[maxN + 1];                   // make this of length maxN??
         for (int i = 0; i <= maxN; i++)
@@ -338,7 +340,7 @@ public class IndexMaxPQ<Key extends Comparable<Key>> implements Iterable<Integer
 
         // increase or decrease the key
         for (int i = 0; i < strings.length; i++) {
-            if (StdRandom.uniform() < 0.5)
+            if (StdRandom.uniformDouble() < 0.5)
                 pq.increaseKey(i, strings[i] + strings[i]);
             else
                 pq.decreaseKey(i, strings[i].substring(0, 1));
