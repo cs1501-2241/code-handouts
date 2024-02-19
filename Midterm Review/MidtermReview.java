@@ -8,13 +8,15 @@ public BinaryNode<T> iterativeLeftMostNode(BinaryNode<T> root){
 }
 
 public BinaryNode<T> iterativeLeftMostLeaf(BinaryNode<T> root){
-    while(root.left != null || 
+    if(root != null){
+        while(root.left != null || 
           root.right != null){
-        if(root.left != null){
-            root = root.left;
-        } else {
-            root = root.right;
-        }
+            if(root.left != null){
+                root = root.left;
+            } else {
+                root = root.right;
+            }
+        }    
     }
     return root;
 }
