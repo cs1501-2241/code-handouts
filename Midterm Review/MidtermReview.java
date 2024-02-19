@@ -1,5 +1,4 @@
-public BinaryNode<T> 
-iterativeLeftMostNode(BinaryNode<T> root){
+public BinaryNode<T> iterativeLeftMostNode(BinaryNode<T> root){
     if(root != null){
      while(root.left != null){
         root = root.left;
@@ -8,8 +7,7 @@ iterativeLeftMostNode(BinaryNode<T> root){
     return root;
 }
 
-public BinaryNode<T> 
-iterativeLeftMostLeaf(BinaryNode<T> root){
+public BinaryNode<T> iterativeLeftMostLeaf(BinaryNode<T> root){
     while(root.left != null || 
           root.right != null){
         if(root.left != null){
@@ -26,8 +24,7 @@ public boolean isFull(BinaryNode<T> root){
     if(root == null){
         result = true;
     } else {
-        if(getHeight(root.left) 
-            == getHeight(root.right) &&
+        if(getHeight(root.left) == getHeight(root.right) &&
             isFull(root.left) &&
             isFull(root.right)){
                 result = true;
@@ -38,14 +35,9 @@ public boolean isFull(BinaryNode<T> root){
 }
 
 public boolean isComplete(BinaryNode<T> root){
-    return isFull(root) || 
-           (isFull(root.left) && isFull(root.right) &&
-           getHeight(root.left) == 1+getHeight(root.right))||
-           (isFull(root.right) && isComplete(root.left) &&
-           getHeight(root.left) == 1+getHeight(root.right))||
-           (isFull(root.left) && isComplete(root.right) &&
-           getHeight(root.left) == getHeight(root.right));
-
+    return ((isFull(root.left) && isFull(root.right) && getHeight(root.left) == 1+getHeight(root.right))||
+           (isFull(root.right) && isComplete(root.left) && getHeight(root.left) == 1+getHeight(root.right))||
+           (isFull(root.left) && isComplete(root.right) && getHeight(root.left) == getHeight(root.right)));
 }
 
 public boolean isBST(BinaryNode<T> root){
@@ -68,10 +60,3 @@ public boolean isBST(BinaryNode<T> root){
     }
     return result;
 }
-
-
-
-
-
-
-
